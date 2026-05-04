@@ -13,130 +13,34 @@
   "lang": "pt-BR",
   "dir": "ltr",
   "categories": ["books", "education", "business"],
-  "iarc_rating_id": "",
   "prefer_related_applications": false,
   "icons": [
-    {
-      "src": "/icons/icon-48.png",
-      "sizes": "48x48",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-72.png",
-      "sizes": "72x72",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-96.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-128.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-144.png",
-      "sizes": "144x144",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-256.png",
-      "sizes": "256x256",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-maskable-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/icons/icon-maskable-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/screenshots/screen-home.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Tela inicial da Amplia"
-    },
-    {
-      "src": "/screenshots/screen-dashboard.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Dashboard do autor"
-    },
-    {
-      "src": "/screenshots/screen-catalogo.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Catálogo de livros"
-    }
+    { "src": "/icons/icon-72.png",           "sizes": "72x72",   "type": "image/png", "purpose": "any"      },
+    { "src": "/icons/icon-96.png",           "sizes": "96x96",   "type": "image/png", "purpose": "any"      },
+    { "src": "/icons/icon-128.png",          "sizes": "128x128", "type": "image/png", "purpose": "any"      },
+    { "src": "/icons/icon-144.png",          "sizes": "144x144", "type": "image/png", "purpose": "any"      },
+    { "src": "/icons/icon-152.png",          "sizes": "152x152", "type": "image/png", "purpose": "any"      },
+    { "src": "/icons/icon-192.png",          "sizes": "192x192", "type": "image/png", "purpose": "any"      },
+    { "src": "/icons/icon-256.png",          "sizes": "256x256", "type": "image/png", "purpose": "any"      },
+    { "src": "/icons/icon-512.png",          "sizes": "512x512", "type": "image/png", "purpose": "any"      },
+    { "src": "/icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
   "shortcuts": [
     {
       "name": "Catálogo",
-      "short_name": "Catálogo",
-      "description": "Ver todos os livros disponíveis",
       "url": "/livros",
       "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
     },
     {
-      "name": "Meu Dashboard",
-      "short_name": "Dashboard",
-      "description": "Acessar meu painel",
+      "name": "Dashboard",
       "url": "/dashboard",
-      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
-    },
-    {
-      "name": "Minha Biblioteca",
-      "short_name": "Biblioteca",
-      "description": "Meus livros adquiridos",
-      "url": "/dashboard/meus-livros",
       "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
     }
   ],
-  "related_applications": [],
-  "share_target": {
-    "action": "/compartilhar",
-    "method": "GET",
-    "params": {
-      "title": "title",
-      "text": "text",
-      "url": "url"
-    }
-  }
+  "screenshots": [
+    { "src": "/screenshots/screen-home.png",      "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "Tela inicial"      },
+    { "src": "/screenshots/screen-dashboard.png", "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "Dashboard do autor" },
+    { "src": "/screenshots/screen-catalogo.png",  "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "Catálogo de livros" }
+  ]
 }

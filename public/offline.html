@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sem conexão — Amplia</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0D1B8E;
-      color: #fff;
-      min-height: 100vh;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -18,39 +18,77 @@
       padding: 24px;
       text-align: center;
     }
-    .icon {
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #0D1B8E;
+      margin-bottom: 40px;
+      text-decoration: none;
+    }
+    .icon-wrap {
       width: 80px;
       height: 80px;
-      background: rgba(255,255,255,0.1);
+      background: #eef0fc;
       border-radius: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 24px;
-      font-size: 36px;
     }
-    h1 { font-size: 24px; font-weight: 700; margin-bottom: 12px; }
-    p  { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 280px; margin: 0 auto 32px; }
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+    p {
+      color: #64748b;
+      font-size: 15px;
+      max-width: 320px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
     button {
-      background: #F97316;
+      background: #0D1B8E;
       color: #fff;
       border: none;
-      padding: 14px 32px;
-      border-radius: 16px;
-      font-size: 15px;
-      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
       cursor: pointer;
-      transition: background .2s;
+      transition: opacity .15s;
     }
-    button:hover { background: #FBBF24; }
-    .cached { margin-top: 24px; font-size: 13px; color: rgba(255,255,255,0.5); }
+    button:hover { opacity: .9; }
   </style>
 </head>
 <body>
-  <div class="icon">📚</div>
+  <a class="logo" href="/">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D1B8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+    </svg>
+    Amplia
+  </a>
+
+  <div class="icon-wrap">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0D1B8E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="1" y1="1" x2="23" y2="23"/>
+      <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/>
+      <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/>
+      <path d="M10.71 5.05A16 16 0 0 1 22.56 9"/>
+      <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/>
+      <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+      <line x1="12" y1="20" x2="12.01" y2="20"/>
+    </svg>
+  </div>
+
   <h1>Você está offline</h1>
-  <p>Verifique sua conexão com a internet e tente novamente.</p>
+  <p>Não foi possível conectar à internet. Verifique sua conexão e tente novamente.</p>
+
   <button onclick="window.location.reload()">Tentar novamente</button>
-  <p class="cached">Algumas páginas visitadas anteriormente podem estar disponíveis.</p>
 </body>
 </html>
