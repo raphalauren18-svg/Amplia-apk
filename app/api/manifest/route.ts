@@ -1,0 +1,68 @@
+import { NextResponse } from 'next/server'
+
+// Fallback: serve o manifest via API route com Content-Type garantido
+// O Next.js às vezes não serve o manifest.json da pasta public com o tipo correto
+// Esta rota garante que o PWABuilder sempre encontre um manifest válido
+
+const manifest = {
+  name: "Amplia — Publique e Venda Livros",
+  short_name: "Amplia",
+  description: "Plataforma completa para autores independentes: publique seu livro, conecte-se com gráficas parceiras e venda através de afiliados em todo o Brasil.",
+  start_url: "/dashboard",
+  id: "/",
+  display: "standalone",
+  display_override: ["standalone", "minimal-ui"],
+  background_color: "#0D1B8E",
+  theme_color: "#0D1B8E",
+  orientation: "portrait-primary",
+  scope: "/",
+  lang: "pt-BR",
+  dir: "ltr",
+  categories: ["books", "education", "business"],
+  prefer_related_applications: false,
+  icons: [
+    { src: "/icons/icon-72.png",           sizes: "72x72",   type: "image/png", purpose: "any"      },
+    { src: "/icons/icon-96.png",           sizes: "96x96",   type: "image/png", purpose: "any"      },
+    { src: "/icons/icon-128.png",          sizes: "128x128", type: "image/png", purpose: "any"      },
+    { src: "/icons/icon-144.png",          sizes: "144x144", type: "image/png", purpose: "any"      },
+    { src: "/icons/icon-152.png",          sizes: "152x152", type: "image/png", purpose: "any"      },
+    { src: "/icons/icon-192.png",          sizes: "192x192", type: "image/png", purpose: "any"      },
+    { src: "/icons/icon-256.png",          sizes: "256x256", type: "image/png", purpose: "any"      },
+    { src: "/icons/icon-512.png",          sizes: "512x512", type: "image/png", purpose: "any"      },
+    { src: "/icons/icon-maskable-192.png", sizes: "192x192", type: "image/png", purpose: "maskable" },
+    { src: "/icons/icon-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+  ],
+  shortcuts: [
+    {
+      name: "Catálogo",
+      url: "/livros",
+      icons: [{ src: "/icons/icon-96.png", sizes: "96x96" }],
+    },
+    {
+      name: "Dashboard",
+      url: "/dashboard",
+      icons: [{ src: "/icons/icon-96.png", sizes: "96x96" }],
+    },
+    {
+      name: "Minha Biblioteca",
+      url: "/dashboard/meus-livros",
+      icons: [{ src: "/icons/icon-96.png", sizes: "96x96" }],
+    },
+  ],
+  screenshots: [
+    { src: "/screenshots/screen-home.png",      sizes: "1080x1920", type: "image/png", form_factor: "narrow", label: "Tela inicial"      },
+    { src: "/screenshots/screen-dashboard.png", sizes: "1080x1920", type: "image/png", form_factor: "narrow", label: "Dashboard do autor" },
+    { src: "/screenshots/screen-catalogo.png",  sizes: "1080x1920", type: "image/png", form_factor: "narrow", label: "Catálogo de livros" },
+  ],
+}
+
+export async function GET() {
+  return new NextResponse(JSON.stringify(manifest, null, 2), {
+    status: 200,
+    headers: {
+      'Content-Type':                'application/manifest+json',
+      'Access-Control-Allow-Origin': '*',
+      'Cache-Control':               'public, max-age=0, must-revalidate',
+    },
+  })
+}

@@ -1,43 +1,55 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Permite que o Next.js sirva arquivos de .well-known
   async headers() {
     return [
-      {
-        source: '/.well-known/assetlinks.json',
-        headers: [
-          { key: 'Content-Type',                   value: 'application/json' },
-          { key: 'Access-Control-Allow-Origin',    value: '*' },
-          { key: 'Cache-Control',                  value: 'public, max-age=3600' },
-        ],
-      },
+      // ── manifest.json ─────────────────────────────────────────
       {
         source: '/manifest.json',
         headers: [
-          { key: 'Content-Type',                   value: 'application/manifest+json' },
-          { key: 'Access-Control-Allow-Origin',    value: '*' },
+          { key: 'Content-Type',                value: 'application/manifest+json' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Cache-Control',               value: 'public, max-age=0, must-revalidate' },
         ],
       },
+      // ── service worker ────────────────────────────────────────
       {
         source: '/sw.js',
         headers: [
-          { key: 'Content-Type',                   value: 'application/javascript' },
-          { key: 'Service-Worker-Allowed',         value: '/' },
-          { key: 'Cache-Control',                  value: 'no-cache, no-store, must-revalidate' },
+          { key: 'Content-Type',       value: 'application/javascript; charset=utf-8' },
+          { key: 'Service-Worker-Allowed', value: '/' },
+          { key: 'Cache-Control',      value: 'no-cache, no-store, must-revalidate' },
+          { key: 'Pragma',             value: 'no-cache' },
         ],
       },
+      // ── offline fallback ──────────────────────────────────────
       {
         source: '/offline.html',
         headers: [
-          { key: 'Cache-Control',                  value: 'public, max-age=86400' },
+          { key: 'Cache-Control', value: 'public, max-age=86400' },
+        ],
+      },
+      // ── .well-known/assetlinks (obrigatório para TWA/Play Store)
+      {
+        source: '/.well-known/assetlinks.json',
+        headers: [
+          { key: 'Content-Type',                value: 'application/json' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Cache-Control',               value: 'public, max-age=3600' },
         ],
       },
     ]
   },
 
-  // Garante que arquivos em public/.well-known sejam servidos
+  // Necessário para servir arquivos de .well-known no Vercel
   async rewrites() {
-    return []
+    return {
+      beforeFiles: [
+        {
+          source: '/.well-known/:path*',
+          destination: '/.well-known/:path*',
+        },
+      ],
+    }
   },
 
   images: {
