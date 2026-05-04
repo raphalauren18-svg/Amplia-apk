@@ -1,33 +1,23 @@
-{
-  "headers": [
-    {
-      "source": "/manifest.json",
-      "headers": [
-        { "key": "Content-Type",                "value": "application/manifest+json" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Cache-Control",               "value": "public, max-age=0, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/sw.js",
-      "headers": [
-        { "key": "Content-Type",           "value": "application/javascript; charset=utf-8" },
-        { "key": "Service-Worker-Allowed", "value": "/" },
-        { "key": "Cache-Control",          "value": "no-cache, no-store, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/.well-known/(.*)",
-      "headers": [
-        { "key": "Content-Type",                "value": "application/json" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
-      ]
-    },
-    {
-      "source": "/offline.html",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
-      ]
+'use client'
+
+import { useEffect } from 'react'
+
+export function PWAInit() {
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('/sw.js', { scope: '/' })
+        .then(reg => {
+          console.log('[PWA] Service Worker registrado:', reg.scope)
+
+          // Verificar atualizações a cada 60 min
+          setInterval(() => reg.update(), 60 * 60 * 1000)
+        })
+        .catch(err => {
+          console.warn('[PWA] Erro ao registrar Service Worker:', err)
+        })
     }
-  ]
+  }, [])
+
+  return null
 }
